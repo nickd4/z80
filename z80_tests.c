@@ -101,7 +101,7 @@ static int run_test(
     // warning: the following line will output dozens of GB of data.
     // z80_debug_output(z);
 
-    z80_step(z);
+    z80_step(z, 1);
   }
 
   long long diff = cyc_expected - z->cyc;
