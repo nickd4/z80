@@ -56,8 +56,8 @@ static INLINE void wb(z80* const z, uint16_t addr, uint8_t val) {
 }
 
 static INLINE uint16_t rw(z80* const z, uint16_t addr) {
-  return (z->read_byte(z->userdata, addr + 1) << 8) |
-         z->read_byte(z->userdata, addr);
+  uint8_t data = z->read_byte(z->userdata, addr);
+  return (z->read_byte(z->userdata, addr + 1) << 8) | data;
 }
 
 static INLINE void ww(z80* const z, uint16_t addr, uint16_t val) {
