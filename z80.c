@@ -234,8 +234,8 @@ static INLINE uint8_t addb(z80* const z, uint8_t a, uint8_t b, bool cy) {
   z->pf = carry(7, a, b, cy) != carry(8, a, b, cy);
   z->cf = carry(8, a, b, cy);
   z->nf = 0;
-  z->xf = GET_BIT(3, result);
-  z->yf = GET_BIT(5, result);
+  //z->xf = GET_BIT(3, result);
+  //z->yf = GET_BIT(5, result);
   return result;
 }
 
@@ -338,8 +338,8 @@ static INLINE void land(z80* const z, uint8_t val) {
   z->pf = parity(result);
   z->nf = 0;
   z->cf = 0;
-  z->xf = GET_BIT(3, result);
-  z->yf = GET_BIT(5, result);
+  //z->xf = GET_BIT(3, result);
+  //z->yf = GET_BIT(5, result);
   z->a = result;
 }
 
@@ -353,8 +353,8 @@ static INLINE void lxor(z80* const z, const uint8_t val) {
   z->pf = parity(result);
   z->nf = 0;
   z->cf = 0;
-  z->xf = GET_BIT(3, result);
-  z->yf = GET_BIT(5, result);
+  //z->xf = GET_BIT(3, result);
+  //z->yf = GET_BIT(5, result);
   z->a = result;
 }
 
@@ -368,8 +368,8 @@ static INLINE void lor(z80* const z, const uint8_t val) {
   z->pf = parity(result);
   z->nf = 0;
   z->cf = 0;
-  z->xf = GET_BIT(3, result);
-  z->yf = GET_BIT(5, result);
+  //z->xf = GET_BIT(3, result);
+  //z->yf = GET_BIT(5, result);
   z->a = result;
 }
 
@@ -380,8 +380,8 @@ static INLINE void cp(z80* const z, const uint8_t val) {
   // the only difference between cp and sub is that
   // the xf/yf are taken from the value to be substracted,
   // not the result
-  z->yf = GET_BIT(5, val);
-  z->xf = GET_BIT(3, val);
+  //z->yf = GET_BIT(5, val);
+  //z->xf = GET_BIT(3, val);
 }
 
 // 0xCB opcodes
@@ -395,8 +395,8 @@ static INLINE uint8_t cb_rlc(z80* const z, uint8_t val) {
   z->nf = 0;
   z->hf = 0;
   z->cf = old;
-  z->xf = GET_BIT(3, val);
-  z->yf = GET_BIT(5, val);
+  //z->xf = GET_BIT(3, val);
+  //z->yf = GET_BIT(5, val);
   return val;
 }
 
@@ -410,8 +410,8 @@ static INLINE uint8_t cb_rrc(z80* const z, uint8_t val) {
   z->hf = 0;
   z->cf = old;
   z->pf = parity(val);
-  z->xf = GET_BIT(3, val);
-  z->yf = GET_BIT(5, val);
+  //z->xf = GET_BIT(3, val);
+  //z->yf = GET_BIT(5, val);
   return val;
 }
 
@@ -425,8 +425,8 @@ static INLINE uint8_t cb_rl(z80* const z, uint8_t val) {
   z->nf = 0;
   z->hf = 0;
   z->pf = parity(val);
-  z->xf = GET_BIT(3, val);
-  z->yf = GET_BIT(5, val);
+  //z->xf = GET_BIT(3, val);
+  //z->yf = GET_BIT(5, val);
   return val;
 }
 
@@ -440,8 +440,8 @@ static INLINE uint8_t cb_rr(z80* const z, uint8_t val) {
   z->nf = 0;
   z->hf = 0;
   z->pf = parity(val);
-  z->xf = GET_BIT(3, val);
-  z->yf = GET_BIT(5, val);
+  //z->xf = GET_BIT(3, val);
+  //z->yf = GET_BIT(5, val);
   return val;
 }
 
@@ -454,8 +454,8 @@ static INLINE uint8_t cb_sla(z80* const z, uint8_t val) {
   z->nf = 0;
   z->hf = 0;
   z->pf = parity(val);
-  z->xf = GET_BIT(3, val);
-  z->yf = GET_BIT(5, val);
+  //z->xf = GET_BIT(3, val);
+  //z->yf = GET_BIT(5, val);
   return val;
 }
 
@@ -469,8 +469,8 @@ static INLINE uint8_t cb_sll(z80* const z, uint8_t val) {
   z->nf = 0;
   z->hf = 0;
   z->pf = parity(val);
-  z->xf = GET_BIT(3, val);
-  z->yf = GET_BIT(5, val);
+  //z->xf = GET_BIT(3, val);
+  //z->yf = GET_BIT(5, val);
   return val;
 }
 
@@ -483,8 +483,8 @@ static INLINE uint8_t cb_sra(z80* const z, uint8_t val) {
   z->nf = 0;
   z->hf = 0;
   z->pf = parity(val);
-  z->xf = GET_BIT(3, val);
-  z->yf = GET_BIT(5, val);
+  //z->xf = GET_BIT(3, val);
+  //z->yf = GET_BIT(5, val);
   return val;
 }
 
@@ -497,8 +497,8 @@ static INLINE uint8_t cb_srl(z80* const z, uint8_t val) {
   z->nf = 0;
   z->hf = 0;
   z->pf = parity(val);
-  z->xf = GET_BIT(3, val);
-  z->yf = GET_BIT(5, val);
+  //z->xf = GET_BIT(3, val);
+  //z->yf = GET_BIT(5, val);
   return val;
 }
 
@@ -507,9 +507,9 @@ static INLINE uint8_t cb_bit(z80* const z, uint8_t val, uint8_t n) {
   const uint8_t result = val & (1 << n);
   z->sf = result >> 7;
   z->zf = result == 0;
-  z->yf = GET_BIT(5, val);
+  //z->yf = GET_BIT(5, val);
   z->hf = 1;
-  z->xf = GET_BIT(3, val);
+  //z->xf = GET_BIT(3, val);
   z->pf = z->zf;
   z->nf = 0;
   return result;
@@ -528,9 +528,9 @@ static INLINE void ldi(z80* const z) {
 
   // see https://wikiti.brandonw.net/index.php?title=Z80_Instruction_Set
   // for the calculation of xf/yf on LDI
-  const uint8_t result = val + z->a;
-  z->xf = GET_BIT(3, result);
-  z->yf = GET_BIT(1, result);
+  //const uint8_t result = val + z->a;
+  //z->xf = GET_BIT(3, result);
+  //z->yf = GET_BIT(1, result);
 
   z->nf = 0;
   z->hf = 0;
@@ -546,11 +546,11 @@ static INLINE void ldd(z80* const z) {
 
 static INLINE void cpi(z80* const z) {
   bool cf = z->cf;
-  const uint8_t result = subb(z, z->a, rb(z, get_hl(z)), 0);
+  /*const uint8_t result =*/ subb(z, z->a, rb(z, get_hl(z)), 0);
   set_hl(z, get_hl(z) + 1);
   set_bc(z, get_bc(z) - 1);
-  z->xf = GET_BIT(3, result - z->hf);
-  z->yf = GET_BIT(1, result - z->hf);
+  //z->xf = GET_BIT(3, result - z->hf);
+  //z->yf = GET_BIT(1, result - z->hf);
   z->pf = get_bc(z) != 0;
   z->cf = cf;
   z->mem_ptr += 1;
@@ -635,8 +635,8 @@ static void daa(z80* const z) {
   z->sf = z->a >> 7;
   z->zf = z->a == 0;
   z->pf = parity(z->a);
-  z->xf = GET_BIT(3, z->a);
-  z->yf = GET_BIT(5, z->a);
+  //z->xf = GET_BIT(3, z->a);
+  //z->yf = GET_BIT(5, z->a);
 }
 
 static INLINE uint16_t displace(
@@ -921,8 +921,8 @@ INLINE void exec_opcode_cb(z80* const z, uint8_t opcode) {
 
     // in bit (hl), x/y flags are handled differently:
     if (z_ == 6) {
-      z->yf = GET_BIT(5, z->mem_ptr >> 8);
-      z->xf = GET_BIT(3, z->mem_ptr >> 8);
+      //z->yf = GET_BIT(5, z->mem_ptr >> 8);
+      //z->xf = GET_BIT(3, z->mem_ptr >> 8);
       z->cyc += 4;
     }
   } break;
@@ -965,8 +965,8 @@ INLINE void exec_opcode_dcb(z80* const z, uint8_t opcode, uint16_t addr) {
   } break;
   case 1: {
     result = cb_bit(z, val, y_);
-    z->yf = GET_BIT(5, addr >> 8);
-    z->xf = GET_BIT(3, addr >> 8);
+    //z->yf = GET_BIT(5, addr >> 8);
+    //z->xf = GET_BIT(3, addr >> 8);
   } break; // bit y,(iz+d)
   case 2: result = val & ~(1 << y_); break; // res y, (iz+d)
   case 3: result = val | (1 << y_); break; // set y, (iz+d)
@@ -1223,8 +1223,8 @@ INLINE void exec_opcode_ed(z80* const z, uint8_t opcode) {
 
     z->nf = 0;
     z->hf = 0;
-    z->xf = GET_BIT(3, z->a);
-    z->yf = GET_BIT(5, z->a);
+    //z->xf = GET_BIT(3, z->a);
+    //z->yf = GET_BIT(5, z->a);
     z->zf = z->a == 0;
     z->sf = z->a >> 7;
     z->pf = parity(z->a);
@@ -1239,8 +1239,8 @@ INLINE void exec_opcode_ed(z80* const z, uint8_t opcode) {
 
     z->nf = 0;
     z->hf = 0;
-    z->xf = GET_BIT(3, z->a);
-    z->yf = GET_BIT(5, z->a);
+    //z->xf = GET_BIT(3, z->a);
+    //z->yf = GET_BIT(5, z->a);
     z->zf = z->a == 0;
     z->sf = z->a >> 7;
     z->pf = parity(z->a);
@@ -1495,24 +1495,24 @@ loop: // for invalid DD/FD opcodes we return here to process normal opcode
     z->a = ~z->a;
     z->nf = 1;
     z->hf = 1;
-    z->xf = GET_BIT(3, z->a);
-    z->yf = GET_BIT(5, z->a);
+    //z->xf = GET_BIT(3, z->a);
+    //z->yf = GET_BIT(5, z->a);
     break; // cpl
 
   case 0x37:
     z->cf = 1;
     z->nf = 0;
     z->hf = 0;
-    z->xf = GET_BIT(3, z->a);
-    z->yf = GET_BIT(5, z->a);
+    //z->xf = GET_BIT(3, z->a);
+    //z->yf = GET_BIT(5, z->a);
     break; // scf
 
   case 0x3F:
     z->hf = z->cf;
     z->cf = !z->cf;
     z->nf = 0;
-    z->xf = GET_BIT(3, z->a);
-    z->yf = GET_BIT(5, z->a);
+    //z->xf = GET_BIT(3, z->a);
+    //z->yf = GET_BIT(5, z->a);
     break; // ccf
 
   case 0x07: {
@@ -1520,8 +1520,8 @@ loop: // for invalid DD/FD opcodes we return here to process normal opcode
     z->a = (z->a << 1) | z->cf;
     z->nf = 0;
     z->hf = 0;
-    z->xf = GET_BIT(3, z->a);
-    z->yf = GET_BIT(5, z->a);
+    //z->xf = GET_BIT(3, z->a);
+    //z->yf = GET_BIT(5, z->a);
   } break; // rlca (rotate left)
 
   case 0x0F: {
@@ -1529,8 +1529,8 @@ loop: // for invalid DD/FD opcodes we return here to process normal opcode
     z->a = (z->a >> 1) | (z->cf << 7);
     z->nf = 0;
     z->hf = 0;
-    z->xf = GET_BIT(3, z->a);
-    z->yf = GET_BIT(5, z->a);
+    //z->xf = GET_BIT(3, z->a);
+    //z->yf = GET_BIT(5, z->a);
   } break; // rrca (rotate right)
 
   case 0x17: {
@@ -1539,8 +1539,8 @@ loop: // for invalid DD/FD opcodes we return here to process normal opcode
     z->a = (z->a << 1) | cy;
     z->nf = 0;
     z->hf = 0;
-    z->xf = GET_BIT(3, z->a);
-    z->yf = GET_BIT(5, z->a);
+    //z->xf = GET_BIT(3, z->a);
+    //z->yf = GET_BIT(5, z->a);
   } break; // rla
 
   case 0x1F: {
@@ -1549,8 +1549,8 @@ loop: // for invalid DD/FD opcodes we return here to process normal opcode
     z->a = (z->a >> 1) | (cy << 7);
     z->nf = 0;
     z->hf = 0;
-    z->xf = GET_BIT(3, z->a);
-    z->yf = GET_BIT(5, z->a);
+    //z->xf = GET_BIT(3, z->a);
+    //z->yf = GET_BIT(5, z->a);
   } break; // rra
 
   case 0xA7: land(z, z->a); break; // and a
