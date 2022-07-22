@@ -1698,8 +1698,8 @@ loop: // for invalid DD/FD opcodes we return here to process normal opcode
 
   case 0xCB: exec_opcode_cb(z, nextb(z)); break;
   case 0xED: exec_opcode_ed(z, nextb(z)); break;
-  case 0xDD: if (!exec_opcode_ddfd(z, nextb(z), &z->ix)) goto loop; break;
-  case 0xFD: if (!exec_opcode_ddfd(z, nextb(z), &z->iy)) goto loop; break;
+  case 0xDD: if (!exec_opcode_ddfd(z, opcode = nextb(z), &z->ix)) goto loop; break;
+  case 0xFD: if (!exec_opcode_ddfd(z, opcode = nextb(z), &z->iy)) goto loop; break;
 
   default: fprintf(stderr, "unknown opcode %02X\n", opcode); break;
   }
